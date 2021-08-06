@@ -20,7 +20,14 @@ class Category extends Model {
 
      protected $table = 'create_categories_table';
      //protected $primaryKey = 'categoryPrimaryKey';
-
+     
+     /**
+      * Inverse of User
+      * Category(Child) extends User(Parent)
+      *
+      * Category can Inherit User Table Property via the method below 
+      *
+      */
      public function CategoryModelCanHaveManyUsers(){
        return $this->belongsToMany('App\Models\User');
      }
