@@ -20,8 +20,8 @@ class StripeCheckoutController extends Controller {
                'currency' => 'USD',
                'unit_amount' => $cartItem->price * 100,
                'product_data' => [
-                   'name' => $cartItem->product->name,
-                   'images' => [$cartItem->product->img],
+                 'name' => $cartItem->product->name,
+                 'images' => [$cartItem->product->img],
                ],
            ];
            $product['quantity'] = $cartItem->quantity;
@@ -54,29 +54,28 @@ class StripeCheckoutController extends Controller {
       Stripe::setApiKey(env('STRIPE_SECRET'));
 
       $YOUR_DOMAIN = 'http://localhost:8000';
-
-
       $checkout_session = \Stripe\Checkout\Session::create([
         'payment_method_types' => [
           'card',
         ],
         'line_items' => [[
           'currency' => 'USD',
+          'amount' => $request->Inpt__nameAttr__selling_price * 100,
           // 'price' => $request->InptT__nameAttr__selling_price,
-          'name' => $request->InptT__nameAttr__name,
-          'amount' => $request->InptT__nameAttr__selling_price,
-          'images' => [$request->InptT__nameAttr__img],
+          'name' => $request->Inpt__nameAttr__name,
+          'images' => [$request->Inpt__nameAttr__img],
           'quantity' => 1,
         ]],
         'mode' => 'payment',
-        'success_url' => $YOUR_DOMAIN . '?checkout-success=true',
-        'cancel_url' => $YOUR_DOMAIN . '?checkout-canceled=true',
+        'success_url' => $YOUR_DOMAIN . '/checkout-success',
+        'cancel_url' => $YOUR_DOMAIN . '/checkout-canceled',
       ]);
 
       header("HTTP/1.1 303 See Other");
       header("Location: " . $checkout_session->url);
       return redirect($checkout_session->url)->with('id', $checkout_session->id);
-      //return response()->json(['id' => $checkout_session->id]);
+
+      // return response()->json(['id' => $checkout_session->id]);
     }
 
     public function success()

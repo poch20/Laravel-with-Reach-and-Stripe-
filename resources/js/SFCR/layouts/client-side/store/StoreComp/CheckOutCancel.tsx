@@ -3,7 +3,7 @@ import React from 'react'
 
 function CheckOutCancel() {
   return (
-    <h1>Canceled</h1>
+    <h1>Ayaw ko Nga</h1>
   )
 }
 

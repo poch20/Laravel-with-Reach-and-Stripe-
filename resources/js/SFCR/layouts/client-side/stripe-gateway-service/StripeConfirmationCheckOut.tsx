@@ -23,38 +23,38 @@ const ProductDisplay = (props) => {
         <input
           defaultValue={props.idProp}
           style={{ display: 'none' }}
-          name="InptT__nameAttr__refKeyId"
-          id="InptT__idAttr__refKeyId"
+          name="Inpt__nameAttr__refKeyId"
+          id="Inpt__idAttr__refKeyId"
         />
         <input
           defaultValue={props.baseObj.obj.name}
           style={{ display: 'none' }}
-          name="InptT__nameAttr__name"
-          id="InptT__idAttr__name"
+          name="Inpt__nameAttr__name"
+          id="Inpt__idAttr__name"
         />
         <input
           defaultValue={`${process.env.ASSET_PATH}${props.baseObj.obj.img}`}
           style={{ display: 'none' }}
-          name="InptT__nameAttr__img"
-          id="InptT__idAttr__img"
+          name="Inpt__nameAttr__img"
+          id="Inpt__idAttr__img"
         />
         <input
           defaultValue={process.env.ASSET_PATH}
           style={{ display: 'none' }}
-          name="InptT__nameAttr__assetPath"
-          id="InptT__idAttr__assetPath"
+          name="Inpt__nameAttr__assetPath"
+          id="Inpt__idAttr__assetPath"
         />
         <input
           defaultValue={props.baseObj.obj.qty}
           style={{ display: 'none' }}
-          name="InptT__nameAttr__qty"
-          id="InptT__idAttr__qty"
+          name="Inpt__nameAttr__qty"
+          id="Inpt__idAttr__qty"
         />
         <input
           defaultValue={props.baseObj.obj.selling_price}
           style={{ display: 'none' }}
-          name="InptT__nameAttr__selling_price"
-          id="InptT__idAttr__selling_price"
+          name="Inpt__nameAttr__selling_price"
+          id="Inpt__idAttr__selling_price"
         />
         <button type="submit" id="checkout-button">
           Checkout
@@ -76,7 +76,8 @@ export default function PreBuiltStripeCheckOut({ props, ...Any }) {
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search)
-
+    // check https://stackoverflow.com/questions/9870512/how-to-obtain-the-query-string-from-the-current-url-with-javascript
+    
     if (query.get('checkout-success')) {
       setMessage('Order placed! You will receive an email confirmation.')
     }

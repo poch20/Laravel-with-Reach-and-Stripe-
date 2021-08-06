@@ -3,7 +3,7 @@ import React from 'react'
 
 function CheckOutSuccess() {
   return (
-    <h1> A Success</h1>
+    <h1>This is React Redirected from its defined URL ROUTE</h1>
   )
 }
 

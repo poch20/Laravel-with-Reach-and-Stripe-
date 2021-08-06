@@ -286,7 +286,7 @@ class ProductControllerAPI extends Controller {
              'total' => $product->selling_price
            ]);
        }
-       flash('Product added to the cart successfully!');
+       //flash('Product added to the cart successfully!');
        return redirect()->back();
    }
 }

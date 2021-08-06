@@ -16,9 +16,14 @@ const CartProducts = () => {
     )
 
     axios.get('/sanctum/csrf-cookie').then((response) => {
-      axios.post('/api/checkout-to-stripe', {}).then((res) => {
-        return stripe.redirectToCheckout({ sessionId: res.data.id })
-      })
+      axios
+        .post('/api/checkout-to-stripe', {
+          headers: { 'Content-Type': 'application/json' },
+          // https://www.ibm.com/docs/en/order-management-sw/9.4.0?topic=services-specifying-http-headers
+        })
+        .then((res) => {
+          return stripe.redirectToCheckout({ sessionId: res.data.id })
+        })
     })
   }
 

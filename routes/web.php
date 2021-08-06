@@ -31,12 +31,10 @@ Route::prefix('/')->group(function() {
   Route::group(['namespace' => 'App\Http\Controllers\ApiForFrontEndFrameworks'], function() {
     Route::get('checkout-success', [RedirectsForFrontEndFrameworks::class,'success'])->where( 'path','([-a-z0-9_/s]+)' )
     ->name('checkout-success');
-    Route::get('checkout-cancel', [RedirectsForFrontEndFrameworks::class,'cancel'])->where( 'path','([-a-z0-9_/s]+)' )
+    Route::get('checkout-canceled', [RedirectsForFrontEndFrameworks::class,'cancel'])->where( 'path','([-a-z0-9_/s]+)' )
     ->name('checkout-cancel');
-    // Route::get('checkout-success', 'StripeCheckoutController@success')->name('checkout.success');
-    // Route::get('checkout-cancel', 'StripeCheckoutController@cancel')->name('checkout.cancel');
-      Route::get('success', 'StripeCheckoutController@success')->name('success');
-      Route::get('cancel', 'StripeCheckoutController@cancel')->name('cancel');
+    Route::get('success', 'StripeCheckoutController@success')->name('success');
+    Route::get('cancel', 'StripeCheckoutController@cancel')->name('cancel');
   });
 
   Route::get('{path}', function() {
